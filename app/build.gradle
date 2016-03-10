@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'assingment_2'
+            keyPassword 'password'
+            storeFile file('/media/neosoft/95ca03b9-9771-4d00-8411-21d958b0ecfe/rahul_backup/Assingment_2/key/keystore.jks')
+            storePassword 'password'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "developer.com.assingment_2"
         minSdkVersion 15
@@ -13,8 +20,15 @@ android {
     }
     buildTypes {
         release {
+            resValue "string", "google_maps_api_key", "AIzaSyCJm4mh65qyp1lnwViikK_YjxAeIRB9Q1w"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            resValue "string", "google_maps_api_key", "AIzaSyDvcdm_bMTzrtQPibFlxnSFKg0wOpwAlt4"
         }
     }
 }
